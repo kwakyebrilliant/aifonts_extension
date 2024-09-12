@@ -47,10 +47,15 @@ class _ScreenState extends State<Screen> {
   }
 
   Future<List<String>> _fetchFonts(String query) async {
-    return _fonts
+    final List<String> matchingFonts = _fonts
         .where((font) => font.toLowerCase().contains(query.toLowerCase()))
-        .take(10)
         .toList();
+
+    // Shuffle the list of matching fonts
+    matchingFonts.shuffle();
+
+    // Return the first 10 fonts or all if there are less than 10
+    return matchingFonts.take(10).toList();
   }
 
   @override
