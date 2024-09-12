@@ -1,6 +1,6 @@
 {
-    "name": "flutter_chrome_extension",
-    "description": "flutter_chrome_extension",
+    "name": "aifonts",
+    "description": "aifonts chrome extension",
     "version": "1.0.0",
     "content_security_policy": {
         "extension_pages": "script-src 'self' ; object-src 'self'"
