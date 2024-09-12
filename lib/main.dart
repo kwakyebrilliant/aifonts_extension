@@ -1,56 +1,19 @@
+import 'package:aifonts_extension/screen.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'aiFonts',
-      home: MyHomePage(),
-    );
-  }
-}
+  const MyApp({super.key});
 
-class MyHomePage extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: RichText(
-          text: TextSpan(
-            children: <TextSpan>[
-              TextSpan(
-                text: 'ai',
-                style: GoogleFonts.inter(
-                  fontSize: 28.0,
-                  fontWeight: FontWeight.w800,
-                  color: const Color(0xFF800080),
-                ),
-              ),
-              TextSpan(
-                text: 'fonts',
-                style: GoogleFonts.roboto(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.w800,
-                  color: const Color(0xFF000000),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            print('Hello, World!');
-          },
-          child: Text('Hello, World!'),
-        ),
-      ),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Screen(),
     );
   }
 }
