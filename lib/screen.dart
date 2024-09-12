@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class Screen extends StatefulWidget {
   const Screen({super.key});
@@ -10,13 +11,7 @@ class Screen extends StatefulWidget {
 
 class _ScreenState extends State<Screen> {
   // List of fonts to choose from
-  final List<String> _fonts = [
-    'Inter',
-    'Roboto',
-    'Lobster',
-    'Oswald',
-    'Poppins'
-  ];
+  final List<String> _fonts = GoogleFonts.asMap().keys.toList();
 
   // Selected font
   String _selectedFont = 'Inter';
@@ -51,13 +46,19 @@ class _ScreenState extends State<Screen> {
     }
   }
 
+  Future<List<String>> _fetchFonts(String query) async {
+    return _fonts
+        .where((font) => font.toLowerCase().contains(query.toLowerCase()))
+        .take(10)
+        .toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       body: CustomScrollView(
         slivers: [
-          // SliverAppBar for scrollable AppBar
           SliverAppBar(
             pinned: true,
             expandedHeight: 80.0,
@@ -87,8 +88,6 @@ class _ScreenState extends State<Screen> {
             ),
             backgroundColor: const Color(0xFFFFFFFF),
           ),
-
-          // SliverToBoxAdapter to wrap regular widgets in a scrollable context
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -118,7 +117,6 @@ class _ScreenState extends State<Screen> {
                     ],
                   ),
 
-                  // Dropdown for selecting a font
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                     child: Column(
@@ -133,58 +131,74 @@ class _ScreenState extends State<Screen> {
                             color: const Color(0xFF000000),
                           ),
                         ),
-
                         const SizedBox(height: 10.0),
 
-                        // Dropdown here
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFFFFFFF),
-                            borderRadius: BorderRadius.circular(10.0),
-                            border: Border.all(
-                              color: const Color(0xFF800080),
-                              width: 1.0,
-                            ),
-                          ),
-                          child: DropdownButtonFormField<String>(
-                            value: _selectedFont,
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                _selectedFont = newValue!;
-                              });
-                            },
-                            decoration: const InputDecoration(
-                              border: InputBorder.none, // No additional border
-                            ),
-                            dropdownColor: const Color(0xFFFFFFFF),
-                            items: _fonts
-                                .map<DropdownMenuItem<String>>((String font) {
-                              return DropdownMenuItem<String>(
-                                value: font,
-                                child: Text(
-                                  font,
-                                  style: GoogleFonts.inter(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w600,
+                        // TypeAheadField for font selection
+                        TypeAheadField<String>(
+                          suggestionsCallback: (pattern) async {
+                            return await _fetchFonts(pattern);
+                          },
+                          builder: (context, controller, focusNode) {
+                            // Container for textfield in typeaheadfield
+                            return Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10.0,
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.0),
+                                color: const Color(0xFFFFFFFF),
+                                border: Border.all(
+                                  color: const Color(0xFF800080),
+                                ),
+                              ),
+
+                              // Textfield for searching fonts
+                              child: TextField(
+                                controller: controller,
+                                focusNode: focusNode,
+                                autofocus: true,
+                                decoration: InputDecoration(
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  labelText: 'Search Fonts',
+                                  labelStyle: GoogleFonts.inter(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w400,
                                     color: const Color(0xFF494B45),
                                   ),
                                 ),
-                              );
-                            }).toList(),
-                          ),
+                              ),
+                            );
+                          },
+                          itemBuilder: (context, font) {
+                            // ListTile to display fonts in suggestions
+                            return ListTile(
+                              title: Text(
+                                font,
+                                style: GoogleFonts.inter(
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xFF494B45),
+                                ),
+                              ),
+                            );
+                          },
+                          onSelected: (font) {
+                            setState(() {
+                              _selectedFont = font;
+                            });
+                          },
                         ),
                       ],
                     ),
                   ),
 
+                  // Font size slider
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Font size text
                         Text(
                           'Font Size',
                           style: GoogleFonts.inter(
@@ -193,10 +207,7 @@ class _ScreenState extends State<Screen> {
                             color: const Color(0xFF000000),
                           ),
                         ),
-
                         const SizedBox(height: 5.0),
-
-                        // Font size slider
                         Slider(
                           value: _fontSize,
                           min: 13,
@@ -213,12 +224,12 @@ class _ScreenState extends State<Screen> {
                     ),
                   ),
 
+                  // Font weight slider
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Font weight text
                         Text(
                           'Font Weight',
                           style: GoogleFonts.inter(
@@ -227,10 +238,7 @@ class _ScreenState extends State<Screen> {
                             color: const Color(0xFF000000),
                           ),
                         ),
-
                         const SizedBox(height: 5.0),
-
-                        // Font weight slider
                         Slider(
                           value: _fontWeightValue,
                           min: 100,
