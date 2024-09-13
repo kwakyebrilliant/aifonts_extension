@@ -286,12 +286,19 @@ class _ScreenState extends State<Screen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          'Apply Font',
-                          style: GoogleFonts.inter(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF000000),
+                        Container(
+                          padding: const EdgeInsets.all(10.0),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF800080),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          child: Text(
+                            'Apply Font',
+                            style: GoogleFonts.inter(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFFFFFFFF),
+                            ),
                           ),
                         ),
                       ],
