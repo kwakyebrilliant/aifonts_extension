@@ -279,6 +279,24 @@ class _ScreenState extends State<Screen> {
                       ],
                     ),
                   ),
+
+                  // Apply Button
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Apply Font',
+                          style: GoogleFonts.inter(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF000000),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
