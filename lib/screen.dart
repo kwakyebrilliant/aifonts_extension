@@ -99,9 +99,10 @@ class _ScreenState extends State<Screen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Wrap around container for preview text
+                  // Wrap around container for preview font
                   Wrap(
                     children: [
+                      // Container for preview font
                       Container(
                         width: MediaQuery.of(context).size.width,
                         padding: const EdgeInsets.all(20.0),
@@ -110,6 +111,7 @@ class _ScreenState extends State<Screen> {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Center(
+                          // Preview font
                           child: Text(
                             'Preview Font',
                             style: GoogleFonts.getFont(
