@@ -110,7 +110,7 @@ class _ScreenState extends State<Screen> {
                         ),
                         child: Center(
                           child: Text(
-                            'Select Text',
+                            'Preview Font',
                             style: GoogleFonts.getFont(
                               _selectedFont,
                               fontSize: _fontSize,
