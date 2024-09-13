@@ -99,6 +99,7 @@ class _ScreenState extends State<Screen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Wrap around container for preview text
                   Wrap(
                     children: [
                       Container(
