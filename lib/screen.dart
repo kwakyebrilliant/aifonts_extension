@@ -260,14 +260,14 @@ class _ScreenState extends State<Screen> {
                     ),
                   ),
 
-                  // Font suggestions
+                  // Suggested Fonts
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Font Suggestions',
+                          'Suggested Fonts',
                           style: GoogleFonts.inter(
                             fontSize: 20.0,
                             fontWeight: FontWeight.w600,
@@ -282,22 +282,25 @@ class _ScreenState extends State<Screen> {
 
                   // Apply Button
                   Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
+                    padding: const EdgeInsets.only(top: 100.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
+                          width: MediaQuery.of(context).size.width / 2,
                           padding: const EdgeInsets.all(10.0),
                           decoration: BoxDecoration(
                             color: const Color(0xFF800080),
                             borderRadius: BorderRadius.circular(20.0),
                           ),
-                          child: Text(
-                            'Apply Font',
-                            style: GoogleFonts.inter(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w600,
-                              color: const Color(0xFFFFFFFF),
+                          child: Center(
+                            child: Text(
+                              'Apply Font',
+                              style: GoogleFonts.inter(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w600,
+                                color: const Color(0xFFFFFFFF),
+                              ),
                             ),
                           ),
                         ),
