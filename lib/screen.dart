@@ -274,19 +274,8 @@ class _ScreenState extends State<Screen> {
                             color: const Color(0xFF000000),
                           ),
                         ),
-                        const SizedBox(height: 5.0),
-                        Slider(
-                          value: _fontWeightValue,
-                          min: 100,
-                          max: 800,
-                          divisions: 7,
-                          label: _fontWeightValue.round().toString(),
-                          onChanged: (double value) {
-                            setState(() {
-                              _fontWeightValue = value;
-                            });
-                          },
-                        ),
+
+                        // Different font suggestions
                       ],
                     ),
                   ),
