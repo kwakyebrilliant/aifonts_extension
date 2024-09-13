@@ -259,6 +259,37 @@ class _ScreenState extends State<Screen> {
                       ],
                     ),
                   ),
+
+                  // Font suggestions
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Font Suggestions',
+                          style: GoogleFonts.inter(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF000000),
+                          ),
+                        ),
+                        const SizedBox(height: 5.0),
+                        Slider(
+                          value: _fontWeightValue,
+                          min: 100,
+                          max: 800,
+                          divisions: 7,
+                          label: _fontWeightValue.round().toString(),
+                          onChanged: (double value) {
+                            setState(() {
+                              _fontWeightValue = value;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
