@@ -111,7 +111,7 @@ class _ScreenState extends State<Screen> {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Center(
-                          // Preview font
+                          // Preview font text
                           child: Text(
                             'Preview Font',
                             style: GoogleFonts.getFont(
