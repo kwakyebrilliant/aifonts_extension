@@ -283,22 +283,43 @@ class _ScreenState extends State<Screen> {
                     ),
                   ),
 
-                  // Apply Button
+                  // Apply and reset Button
                   Padding(
                     padding: const EdgeInsets.only(top: 100.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        // Apply button
                         Container(
-                          width: MediaQuery.of(context).size.width / 2,
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 35.0),
                           decoration: BoxDecoration(
                             color: const Color(0xFF800080),
-                            borderRadius: BorderRadius.circular(20.0),
+                            borderRadius: BorderRadius.circular(100.0),
                           ),
                           child: Center(
                             child: Text(
                               'Apply Font',
+                              style: GoogleFonts.inter(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w600,
+                                color: const Color(0xFFFFFFFF),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        // Reset Button
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 35.0),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF800080),
+                            borderRadius: BorderRadius.circular(100.0),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Reset Font',
                               style: GoogleFonts.inter(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.w600,
