@@ -291,6 +291,7 @@ class _ScreenState extends State<Screen> {
                       children: [
                         // Apply button
                         Container(
+                          width: MediaQuery.of(context).size.width / 3 + 150.0,
                           padding: const EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 35.0),
                           decoration: BoxDecoration(
@@ -311,6 +312,7 @@ class _ScreenState extends State<Screen> {
 
                         // Reset Button
                         Container(
+                          width: MediaQuery.of(context).size.width / 3 + 150.0,
                           padding: const EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 35.0),
                           decoration: BoxDecoration(
