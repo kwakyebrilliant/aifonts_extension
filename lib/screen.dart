@@ -295,9 +295,7 @@ class _ScreenState extends State<Screen> {
                         // Padding around different font suggestions
                         Padding(
                           padding: const EdgeInsets.only(
-                            left: 10.0,
-                            right: 10.0,
-                            top: 20.0,
+                            top: 5.0,
                           ),
 
                           // Wrap starts here
@@ -343,7 +341,7 @@ class _ScreenState extends State<Screen> {
                                         ),
                                         decoration: BoxDecoration(
                                           color: isSelected
-                                              ? const Color(0xFFF6C00A)
+                                              ? const Color(0xFF800080)
                                               : const Color(0xFFFFFFFF)
                                                   .withOpacity(0.8),
                                           borderRadius:
