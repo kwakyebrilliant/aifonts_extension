@@ -22,6 +22,15 @@ class _ScreenState extends State<Screen> {
   // Selected font weight
   double _fontWeightValue = 400.0;
 
+  // suggestedfonts list
+  final List<String> suggestedfonts = [
+    'inter',
+    'inter',
+  ];
+
+  // suggestedfonts list
+  final Set<String> _suggestedfonts = {};
+
   // Map slider value to FontWeight
   FontWeight _getFontWeight(double value) {
     switch (value.round()) {
