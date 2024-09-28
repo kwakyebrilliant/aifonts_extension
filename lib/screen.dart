@@ -25,11 +25,16 @@ class _ScreenState extends State<Screen> {
   // suggestedfonts list
   final List<String> suggestedfonts = [
     'inter',
-    'inter',
+    'Open',
+    'New',
+    'Old',
+    'Calm',
+    'Hi',
+    'Hue',
   ];
 
   // suggestedfonts list
-  final Set<String> _suggestedfonts = {};
+  final Set<String> _suggestedFontsList = {};
 
   // Map slider value to FontWeight
   FontWeight _getFontWeight(double value) {
@@ -287,7 +292,84 @@ class _ScreenState extends State<Screen> {
                           ),
                         ),
 
-                        // Different font suggestions
+                        // Padding around different font suggestions
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 10.0,
+                            right: 10.0,
+                            top: 20.0,
+                          ),
+
+                          // Wrap starts here
+                          child: StatefulBuilder(
+                            builder:
+                                (BuildContext context, StateSetter setState) {
+                              return Wrap(
+                                children: suggestedfonts.map((suggestedfonts) {
+                                  final isSelected = _suggestedFontsList
+                                      .contains(suggestedfonts);
+                                  return GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        if (_suggestedFontsList
+                                            .contains(suggestedfonts)) {
+                                          _suggestedFontsList
+                                              .remove(suggestedfonts);
+                                        } else {
+                                          _suggestedFontsList
+                                              .add(suggestedfonts);
+                                        }
+                                      });
+                                    },
+
+                                    // Container with border around each genre
+                                    child: Container(
+                                      padding: const EdgeInsets.all(3.0),
+                                      margin: const EdgeInsets.only(
+                                          right: 10.0, top: 10.0),
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                        color: const Color(0xFFF9F9FA),
+                                      ),
+
+                                      // Container for each genre
+                                      child: Container(
+                                        padding: const EdgeInsets.only(
+                                          left: 16.0,
+                                          right: 16.0,
+                                          top: 8.0,
+                                          bottom: 8.0,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: isSelected
+                                              ? const Color(0xFFF6C00A)
+                                              : const Color(0xFFFFFFFF)
+                                                  .withOpacity(0.8),
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                        ),
+
+                                        // Text for each genre
+                                        child: Text(
+                                          suggestedfonts,
+                                          style: GoogleFonts.inter(
+                                            fontSize: 14.0,
+                                            fontWeight: FontWeight.w600,
+                                            color: isSelected
+                                                ? const Color(0xFFFFFFFF)
+                                                : const Color(0xFF000000),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }).toList(),
+                              );
+                            },
+                          ),
+                          // Wrap ends here
+                        ),
                       ],
                     ),
                   ),
